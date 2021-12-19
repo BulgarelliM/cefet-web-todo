@@ -25,7 +25,7 @@ function insereTarefaNaPagina(obj) {
   elementoTarefa.innerHTML = obj.nome;
   elementoTarefa.classList.add("item-tarefa"); // Adiciona a classe item-tarefa
   elementoTarefa.classList.add(`categoria-${obj.categoria}`);
-
+  elementoTarefa.setAttribute("data-realizada", obj.realizada);
   // Verifica se esta realizada:
   if (obj.realizada) {
     elementoTarefa.classList.add("marcado");
@@ -70,3 +70,18 @@ pegaFiltro.addEventListener("change", function (e) {
     });
   }
 });
+
+// Atv 5
+let getTarefas = document.querySelectorAll(".item-tarefa");
+getTarefas.forEach(marcaTarefa);
+function marcaTarefa(tarefa) {
+  tarefa.addEventListener("click", function (e) {
+    let tarefaMarcada = e.currentTarget;
+    if (tarefaMarcada.classList.contains("marcado")) {
+      tarefaMarcada.setAttribute("data-realizada", false);
+    } else {
+      tarefaMarcada.setAttribute("data-realizada", true);
+    }
+    tarefaMarcada.classList.toggle("marcado");
+  });
+}
