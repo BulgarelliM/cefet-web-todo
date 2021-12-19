@@ -35,3 +35,17 @@ function insereTarefaNaPagina(obj){
 }
 
 tarefas.forEach(insereTarefaNaPagina);
+
+// ---------------------------------------------------------------------
+// Atividade 2
+let incluiTarefaElemento = document.querySelector('#incluir-nova-tarefa');
+
+incluiTarefaElemento.addEventListener('click', function(event) {
+    let tarefaTxt = document.querySelector('#nova-tarefa-nome');
+    let selecaoDrop = document.querySelector('#nova-tarefa-categoria');
+    let tarefaNova = new Tarefa(tarefaTxt.value, selecaoDrop.value, false);
+    tarefas.push(tarefaNova);
+    insereTarefaNaPagina(tarefaNova);
+    tarefaTxt.value='';
+    tarefaTxt.focus();
+});
